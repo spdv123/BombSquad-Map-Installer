@@ -1,6 +1,7 @@
 # BombSquad地图安装器
 
 * 本项目旨在方便BombSquad的地图MOD作者发布他们的作品
+* 你可以用这个项目在Android, Windows, MacOS, Linux全平台发布你的地图
 * _[BombSquad](http://www.froemling.net/apps/bombsquad)是[Eric Froemling](http://www.froemling.net/about)创作的一款游戏_
 * [English Version Here](README.md)
 
@@ -48,6 +49,9 @@ registerMap(yourMapWhateverTheName)
 
 5. 复制```installYourMap.py```文件和```mapHello```文件夹到BombSquad的MOD目录，
 重启游戏，如果一切顺利，你就可以发布了！
+![success.png](screenshots/success.png)
+
+_样例请参考[samples](samples)文件夹_
 
 # 作者
 

@@ -1,6 +1,7 @@
 # BombSquad Map Installer
 
 * This project offers an easy way for BombSquad map modders to publish their works.
+* Android, Windows, MacOS, Linux are all supported.
 * _[BombSquad](http://www.froemling.net/apps/bombsquad) is a game by [Eric Froemling](http://www.froemling.net/about)_
 * [中文版说明文档](README_CHS.md)
 
@@ -47,6 +48,9 @@ should be like the following:
 
 5. Copy ```installYourMap.py``` and ```mapHello``` to the BombSquad modding directory,
 restart your game, if everything goes well, publish it!
+![success.png](screenshots/success.png)
+
+_For samples, view the [samples](samples) directory_
 
 # Authors
 
