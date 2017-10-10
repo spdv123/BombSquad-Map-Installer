@@ -10,7 +10,7 @@ class YinYangMap(Map):
 
     @classmethod
     def getPreviewTextureName(cls):
-        return 'yinYangPreview'
+        return 'yinyangPreview'
 
     @classmethod
     def onPreload(cls):

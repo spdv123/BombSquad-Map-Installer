@@ -5,7 +5,7 @@ import shutil
 
 NEW_MAP_DIRECTORY = 'mapYinYang'  # The directory contains which were described in README
 NEW_MAP_NAME = u'Yin Yang'  # ensure unicode
-SUPPORTED_PLATFORMS = ['other']  # other means Win, Linux, Mac as they all use .dds
+SUPPORTED_PLATFORMS = ['android', 'other']  # other means Win, Linux, Mac as they all use .dds
 
 
 ### YOU DONNOT HAVE TO EDIT ANYTHING BELOW ###
