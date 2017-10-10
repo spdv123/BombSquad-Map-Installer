@@ -2,6 +2,7 @@
 import os
 import bs
 import shutil
+import hashlib
 
 NEW_MAP_DIRECTORY = 'mapHello'  # The directory contains which were described in README
 NEW_MAP_NAME = u'Your Map Name'  # ensure unicode
@@ -25,8 +26,6 @@ class InstallerLanguageChinese(object):
 
 
 InstallerLanguage = InstallerLanguageEnglish
-if bs.getLanguage() == 'Chinese':
-    InstallerLanguage = InstallerLanguageChinese
 
 
 class NewMapInstaller(object):
@@ -63,11 +62,33 @@ class NewMapInstaller(object):
             f = open(initFile, 'w')
             f.close()
 
+    @staticmethod
+    def checkFileSame(f1, f2):
+        try:
+            md5s = [hashlib.md5(), hashlib.md5()]
+            fs = [f1, f2]
+            for i in range(2):
+                f = open(fs[i], 'rb')
+                block_size = 2 ** 20
+                while True:
+                    data = f.read(block_size)
+                    if not data: break
+                    md5s[i].update(data)
+                f.close()
+                md5s[i] = md5s[i].hexdigest()
+            return md5s[0] == md5s[1]
+        except Exception, e:
+            return False
+
     def checkInstalled(self):
         installed = True
         for model in self.models:
             systemModel = self.modelsDir + model
+            modModel = self.mapFilesDir + model
             if not os.path.isfile(systemModel):
+                installed = False
+                break
+            if not self.checkFileSame(systemModel, modModel):
                 installed = False
                 break
 
@@ -79,13 +100,21 @@ class NewMapInstaller(object):
                 if texture.endswith('.ktx'):
                     continue
             systemTexture = self.texturesDir + texture
+            modTexture = self.mapFilesDir + texture
             if not os.path.isfile(systemTexture):
+                installed = False
+                break
+            if not self.checkFileSame(systemTexture, modTexture):
                 installed = False
                 break
 
         for au in self.audio:
             systemAudio = self.audioDir + au
+            modAudio = self.mapFilesDir + au
             if not os.path.exists(systemAudio):
+                installed = False
+                break
+            if not self.checkFileSame(systemAudio, modAudio):
                 installed = False
                 break
 
