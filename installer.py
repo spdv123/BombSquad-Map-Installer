@@ -13,19 +13,21 @@ SUPPORTED_PLATFORMS = ['android', 'other']  # other means Win, Linux, Mac as the
 
 class InstallerLanguageEnglish(object):
     installing = u'Installing map [%s]...'
-    success = u'Map [%s] installation succeeded, please restart'
+    success = u'Map [%s] installation succeeded!'
     fail = u'Map [%s] installation failed'
     notSupported = u'Map [%s] is not supported on %s'
 
 
 class InstallerLanguageChinese(object):
     installing = u'正在安装地图[%s], 请稍候...'
-    success = u'地图[%s]安装完成！请彻底重启游戏生效'
+    success = u'地图[%s]安装完成！'
     fail = u'地图[%s]安装失败'
     notSupported = u'地图[%s]不支持%s平台！'
 
 
 InstallerLanguage = InstallerLanguageEnglish
+if bs.getLanguage() == 'Chinese':
+    InstallerLanguage = InstallerLanguageChinese
 
 
 class NewMapInstaller(object):
@@ -163,6 +165,9 @@ class NewMapInstaller(object):
                 shutil.copy(modAudio, systemAudio)
 
             bs.screenMessage(InstallerLanguage.success % self.mapName, color=(0, 1, 0))
+
+            bs.reloadMedia()
+            exec 'import ' + NEW_MAP_DIRECTORY + '.bsNewMap'
         except IOError, e:
             bs.screenMessage(InstallerLanguage.fail % self.mapName, color=(1, 0, 0))
             bs.screenMessage(str(e), color=(1, 0, 0))
