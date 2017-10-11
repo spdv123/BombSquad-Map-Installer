@@ -5,7 +5,7 @@ import shutil
 import hashlib
 
 NEW_MAP_DIRECTORY = 'mapYinYang'  # The directory contains which were described in README
-NEW_MAP_NAME = u'Yin Yang'  # ensure unicode
+NEW_MAP_NAME = u'剑舞乾坤'  # ensure unicode
 SUPPORTED_PLATFORMS = ['android', 'other']  # other means Win, Linux, Mac as they all use .dds
 
 
