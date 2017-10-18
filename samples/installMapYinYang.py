@@ -36,12 +36,12 @@ class NewMapInstaller(object):
     supportedPlatforms = SUPPORTED_PLATFORMS
 
     def __init__(self):
-        self.mapFilesDir = bs.getEnvironment()['userScriptsDirectory'] + '/' + self.copyDir + '/'
-        self.scriptsDir = bs.getEnvironment()['systemScriptsDirectory'] + '/'
-        self.dataDir = self.scriptsDir + '../'
-        self.modelsDir = self.dataDir + 'models/'
-        self.audioDir = self.dataDir + 'audio/'
-        self.texturesDir = self.dataDir + 'textures/'
+        self.mapFilesDir = bs.getEnvironment()['userScriptsDirectory'] + os.sep + self.copyDir + os.sep
+        self.scriptsDir = bs.getEnvironment()['systemScriptsDirectory'] + os.sep
+        self.dataDir = self.scriptsDir + '..' + os.sep
+        self.modelsDir = self.dataDir + 'models' + os.sep
+        self.audioDir = self.dataDir + 'audio' + os.sep
+        self.texturesDir = self.dataDir + 'textures' + os.sep
 
         self.platform = bs.getEnvironment()['platform']
         self.models = []
